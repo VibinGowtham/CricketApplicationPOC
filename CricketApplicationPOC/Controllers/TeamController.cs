@@ -44,6 +44,34 @@ namespace CricketApplicationPOC.Controllers
                 return "Error";
             }
         }
+
+
+        [HttpPost("match/add")]
+        public async Task<string> addMatch(MatchDto matchDto)
+        {
+            try
+            {
+                return await _teamService.addMatch(matchDto);
+            }
+            catch(Exception e)
+            {
+                return e.Message;
+            }
+        }
+
+
+        [HttpPost("match/winner/update")]
+        public async Task<string> updateWinner(MatchDto matchDto)
+        {
+            try
+            {
+                return await _teamService.updateWinner(matchDto);
+            }
+            catch (Exception e)
+            {
+                return e.ToString();
+            }
+        }
     }
 }
 

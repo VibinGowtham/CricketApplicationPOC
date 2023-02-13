@@ -90,6 +90,48 @@ namespace CricketApplicationPOC.Services
             return team;
         }
 
+
+        public async Task<string> addMatch(MatchDto matchDto)
+        {
+
+            Match match = new Match();
+
+            match.Team1Id = matchDto.Team1Id;
+            match.Team2Id = matchDto.Team2Id;
+
+            try
+            {
+                await _dbContext.AddAsync<Match>(match);
+
+                await _dbContext.SaveChangesAsync();
+
+                return "Successfully Added Match";
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<string> updateWinner(MatchDto matchDto)
+        {
+            try
+            {
+                Match match = await _dbContext.FindAsync<Match>(matchDto.MatchId);
+                if (match != null)
+                {
+                    match.WinnerTeamId = matchDto.WinnerTeamId;
+                    _dbContext.Update<Match>(match);
+                    await _dbContext.SaveChangesAsync();
+                    return "Winner Updated";
+                }
+                return "Match doesn't Exist";
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }
 

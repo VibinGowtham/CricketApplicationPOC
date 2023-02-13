@@ -20,6 +20,8 @@ namespace CricketApplicationPOC.Models
         public DbSet<Team> Teams { get; set; }
 
         public DbSet<PlayerStatistics> PlayerStatistics { get; set; }
+
+        public DbSet<Match> Matches { get; set; }
     }
 }
 
