@@ -1,5 +1,6 @@
 ﻿using System;
 using CricketApplicationPOC.Dto;
+using CricketApplicationPOC.Models;
 using CricketApplicationPOC.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -34,20 +35,20 @@ namespace CricketApplicationPOC.Controllers
             }
         }
 
-        [HttpPost("statistics/update")]
-        public async Task<string> savePlayerStatistics(PlayerDto playerDto)
+        [HttpPost("statistics/save")]
+        public async Task<string> savePlayerStatistics(PlayerStatisticsDto playerStatisticsDto)
         {
             try
             {
                 _logger.LogInformation("Entor Player Statistics");
-                return await _playerService.addPlayer(playerDto);
-            }
+                return await _playerService.savePlayerStatistics(playerStatisticsDto);
+        }
             catch (Exception e)
             {
-                _logger.LogInformation("Error in Add Player");
+                _logger.LogInformation("Error in Player Statistics");
                 return e.Message;
             }
-        }
+}
 
     }
 }

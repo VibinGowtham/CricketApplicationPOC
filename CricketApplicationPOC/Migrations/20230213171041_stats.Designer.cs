@@ -2,6 +2,7 @@
 using CricketApplicationPOC.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CricketApplicationPOC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230213171041_stats")]
+    partial class stats
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,31 +52,6 @@ namespace CricketApplicationPOC.Migrations
                     b.ToTable("Players");
                 });
 
-            modelBuilder.Entity("CricketApplicationPOC.Models.PlayerStatistics", b =>
-                {
-                    b.Property<int>("PlayerStatisticsId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("PlayerId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TotalLoses")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("TotalMatchesPlayed")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("TotalWins")
-                        .HasColumnType("longtext");
-
-                    b.HasKey("PlayerStatisticsId");
-
-                    b.HasIndex("PlayerId");
-
-                    b.ToTable("PlayerStatistics");
-                });
-
             modelBuilder.Entity("CricketApplicationPOC.Models.Team", b =>
                 {
                     b.Property<int>("TeamId")
@@ -96,7 +73,7 @@ namespace CricketApplicationPOC.Migrations
 
                     b.HasKey("TeamId");
 
-                    b.ToTable("Teams");
+                    b.ToTable("Team");
                 });
 
             modelBuilder.Entity("CricketApplicationPOC.Models.User", b =>
@@ -128,17 +105,6 @@ namespace CricketApplicationPOC.Migrations
                         .IsRequired();
 
                     b.Navigation("Team");
-                });
-
-            modelBuilder.Entity("CricketApplicationPOC.Models.PlayerStatistics", b =>
-                {
-                    b.HasOne("CricketApplicationPOC.Models.Player", "Player")
-                        .WithMany()
-                        .HasForeignKey("PlayerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Player");
                 });
 #pragma warning restore 612, 618
         }

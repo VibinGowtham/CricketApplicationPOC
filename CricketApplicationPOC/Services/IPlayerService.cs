@@ -1,5 +1,6 @@
 ﻿using System;
 using CricketApplicationPOC.Dto;
+using CricketApplicationPOC.Models;
 
 namespace CricketApplicationPOC.Services
 {
@@ -7,7 +8,9 @@ namespace CricketApplicationPOC.Services
 	{
         public Task<string> addPlayer(PlayerDto playerDto);
 
-        //public Task<string> savePlayerStatistics(PlayerDto playerDto);
+        public Task<string> savePlayerStatistics(PlayerStatisticsDto playerStatisticsDto);
+
+        public PlayerStatistics getPlayerStatisticsByPlayerId(int playerId);
     }
 }
 

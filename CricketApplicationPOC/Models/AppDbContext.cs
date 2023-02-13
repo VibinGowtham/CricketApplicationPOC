@@ -19,7 +19,7 @@ namespace CricketApplicationPOC.Models
 
         public DbSet<Team> Teams { get; set; }
 
-        public DbSet<Team> PlayerStatistics { get; set; }
+        public DbSet<PlayerStatistics> PlayerStatistics { get; set; }
     }
 }
 
