@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  cricketapplicationpoc:
+    image: ${DOCKER_REGISTRY-}cricketapplicationpoc
+    build:
+      context: .
+      dockerfile: CricketApplicationPOC/Dockerfile
+
+  notificationapiservice:
+    image: ${DOCKER_REGISTRY-}notificationapiservice
+    build:
+      context: .
+      dockerfile: NotificationApiService/Dockerfile
+
