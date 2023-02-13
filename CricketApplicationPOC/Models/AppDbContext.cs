@@ -22,6 +22,8 @@ namespace CricketApplicationPOC.Models
         public DbSet<PlayerStatistics> PlayerStatistics { get; set; }
 
         public DbSet<Match> Matches { get; set; }
+
+        public DbSet<Notification> Notifications { get; set; }
     }
 }
 
