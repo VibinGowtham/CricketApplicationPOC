@@ -27,8 +27,7 @@ namespace CricketApplicationPOC.Services
 
 			try
 			{
-
-                _dbContext.Add<User>(user);
+				_dbContext.Add<User>(user);
 
                 _dbContext.SaveChanges();
 

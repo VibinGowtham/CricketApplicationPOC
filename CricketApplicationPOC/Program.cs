@@ -20,6 +20,10 @@ builder.Services.AddDbContext<AppDbContext>(option =>
 
 builder.Services.AddScoped<IUserService, UserService>();
 
+builder.Services.AddScoped<ITeamService, TeamService>();
+
+builder.Services.AddScoped<IPlayerService, PlayerService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

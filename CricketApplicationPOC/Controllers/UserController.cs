@@ -18,7 +18,6 @@ namespace CricketApplicationPOC.Controllers
 
         }
 
-        //[Route("register")]
         [HttpPost("register")]
         public string Register(UserDto userDetails)
         {
@@ -33,7 +32,6 @@ namespace CricketApplicationPOC.Controllers
         }
 
 
-        //[Route("login")]
         [HttpPost("login")]
         public string Login(UserDto userDetails)
         {
