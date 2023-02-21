@@ -1,5 +1,6 @@
 ﻿using System;
 using CricketApplicationPOC.Dto;
+using CricketApplicationPOC.Models;
 using CricketApplicationPOC.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -72,6 +73,22 @@ namespace CricketApplicationPOC.Controllers
                 return e.ToString();
             }
         }
+
+
+        [HttpGet("all")]
+        public object getAllTeams()
+        {
+            try
+            {
+                return _teamService.getAllTeams();
+            }
+            catch (Exception e)
+            {
+                return e.ToString();
+            }
+        }
+
+
     }
 }
 

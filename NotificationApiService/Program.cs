@@ -22,15 +22,11 @@ builder.Services.AddScoped<INotificationService, NotificationService>();
 
 var app = builder.Build();
 string queueName = "CricApp";
-string connectionString = builder.Configuration["ConnectionStrings:Default"];
+string connectionString = builder.Configuration["ConnectionStrings:Deployed"];
 await RabbitMQService.StartConsumer(queueName, connectionString);
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseAuthorization();
 

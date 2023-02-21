@@ -41,13 +41,21 @@ namespace CricketApplicationPOC.Services
 		}
 
 
-		public User login(UserDto userDetails)
+		public string login(UserDto userDetails)
 		{
 			if (userDetails.Email.Length == 0 || userDetails.Password.Length == 0)
 			{
-				throw new Exception("Invalid Credentials");
+				throw new Exception("Enter Email and Password");
 			}
-			return _dbContext.Find<User>(userDetails.Email);
+			User user = _dbContext.Users.Where(user => user.Email == userDetails.Email).FirstOrDefault();
+			if (user!=null)
+			{
+				var decryptedPassword = BCrypt.Net.BCrypt.Verify(userDetails.Password, user.Password);
+
+				if (decryptedPassword) return "Login Successfull";
+				else return "Invalid password";
+			}
+			return "User Not found.please register";
         }
 
 	}

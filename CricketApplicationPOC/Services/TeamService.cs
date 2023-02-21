@@ -132,6 +132,12 @@ namespace CricketApplicationPOC.Services
                 throw;
             }
         }
+
+        public List<Team> getAllTeams()
+        {
+            return _dbContext.Teams.ToList();
+        }
+
     }
 }
 

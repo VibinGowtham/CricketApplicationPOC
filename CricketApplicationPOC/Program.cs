@@ -14,7 +14,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AppDbContext>(option =>
 {
-    var connectionString = builder.Configuration.GetConnectionString("Default");
+    var connectionString = builder.Configuration.GetConnectionString("Deployed");
     option.UseMySql(connectionString,ServerVersion.AutoDetect(connectionString));
 });
 
@@ -29,13 +29,8 @@ builder.Services.AddScoped<INotificationService, NotificationService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseAuthorization();
 

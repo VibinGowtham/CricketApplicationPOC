@@ -6,10 +6,12 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["NotificationApiService/NotificationApiService.csproj", "NotificationApiService/"]
-RUN dotnet restore "NotificationApiService/NotificationApiService.csproj"
-COPY . .
+COPY ["NotificationApiService.csproj", "NotificationApiService/"]
 WORKDIR "/src/NotificationApiService"
+RUN dotnet restore "NotificationApiService.csproj"
+
+COPY . .
+
 RUN dotnet build "NotificationApiService.csproj" -c Release -o /app/build
 
 FROM build AS publish

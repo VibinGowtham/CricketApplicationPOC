@@ -37,7 +37,7 @@ namespace CricketApplicationPOC.Controllers
         {
             try
             {
-                return _userService.login(userDetails).Email ;
+                return _userService.login(userDetails) ;
             }
             catch (Exception e)
             {

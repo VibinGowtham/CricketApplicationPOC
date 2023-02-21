@@ -8,7 +8,7 @@ namespace CricketApplicationPOC.Services
 	{
 		public string register(UserDto userDetails);
 
-        public User login(UserDto userDetails);
+        public string login(UserDto userDetails);
     }
 }
 

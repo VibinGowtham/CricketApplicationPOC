@@ -16,6 +16,7 @@ namespace CricketApplicationPOC.Services
 
         public Task<string> updateWinner(MatchDto matchDto);
 
+        public List<Team> getAllTeams();
     }
 }
 
